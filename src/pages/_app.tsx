@@ -11,6 +11,7 @@ import "../styles/index.css";
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={lightTheme}>
+      {/* @ts-ignore */}
       <MeetingProvider>
         <Component {...pageProps} />
       </MeetingProvider>

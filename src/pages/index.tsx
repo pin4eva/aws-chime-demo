@@ -14,6 +14,7 @@ import {
 } from "amazon-chime-sdk-component-library-react";
 import { useState, useEffect } from "react";
 import { MeetingSessionConfiguration } from "amazon-chime-sdk-js";
+import { styled } from "styled-components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -90,7 +91,7 @@ export default function Home() {
     setMeetingId("");
   };
   return (
-    <main className={inter.className}>
+    <Main className={inter.className}>
       <div className="container mx-auto">
         <h1 className=" text-xl font-semibold">Hello AWS Chime</h1>
 
@@ -98,12 +99,30 @@ export default function Home() {
           <RemoteVideos />
           <div>{<LocalVideo className="LocalVideo" />}</div>
         </div>
-        <div className="flex gap-2">
-          <button onClick={() => handleJoin()}> Join</button>
-          <button onClick={() => handleLeave()}>Leave</button>
-          <button onClick={() => handleEnd()}>End</button>
+        <div className="flex gap-2 mt-4">
+          <button
+            className="btn bg-emerald-700 px-4 rounded-md text-white"
+            onClick={() => handleJoin()}
+          >
+            {" "}
+            Join
+          </button>
+          <button
+            className="btn bg-emerald-700 px-4 rounded-md text-white"
+            onClick={() => handleLeave()}
+          >
+            Leave
+          </button>
+          <button
+            className="btn bg-emerald-700 px-4 rounded-md text-white"
+            onClick={() => handleEnd()}
+          >
+            End
+          </button>
         </div>
       </div>
-    </main>
+    </Main>
   );
 }
+
+const Main = styled.main``;
