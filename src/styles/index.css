@@ -1,0 +1,12 @@
+div.RemoteVideos {
+  height: 640px;
+  width: 640px;
+}
+div.LocalVideo {
+  outline-style: solid;
+  position: absolute;
+  top: 140px;
+  left: 80px;
+  height: 180px;
+  width: 180px;
+}
