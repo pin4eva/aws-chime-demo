@@ -51,14 +51,14 @@ export default function Home() {
     await meetingManager.leave();
   };
 
-  const handleJoin = async () => {
+  const handleJoin = async (requestId?: string) => {
     const endpoint = "/api/join";
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ requestId: requestId }),
+      body: JSON.stringify({ requestId }),
     };
     const response = await fetch(endpoint, options);
     const result = await response.json();
@@ -90,6 +90,12 @@ export default function Home() {
     await fetch(endpoint, options);
     setMeetingId("");
   };
+
+  const handleJoinByRequestId = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!requestId) return;
+    handleJoin(requestId);
+  };
   return (
     <Main className={inter.className}>
       <div className="container mx-auto">
@@ -100,23 +106,26 @@ export default function Home() {
           <div>{<LocalVideo className="LocalVideo" />}</div>
         </div>
         <div className="flex gap-2 mt-4">
-          <button
-            className="btn bg-emerald-700 px-4 rounded-md text-white"
-            onClick={() => handleJoin()}
-          >
+          <form onSubmit={handleJoinByRequestId}>
+            <input
+              type="text"
+              className="input"
+              placeholder="requestId"
+              value={requestId}
+              onChange={(e) => setRequestId(e.target.value)}
+            />
+            <button disabled={!requestId} className="btn bg-red-500">
+              Enter
+            </button>
+          </form>
+          <button className="btn" onClick={() => handleJoin()}>
             {" "}
             Join
           </button>
-          <button
-            className="btn bg-emerald-700 px-4 rounded-md text-white"
-            onClick={() => handleLeave()}
-          >
+          <button className="btn" onClick={() => handleLeave()}>
             Leave
           </button>
-          <button
-            className="btn bg-emerald-700 px-4 rounded-md text-white"
-            onClick={() => handleEnd()}
-          >
+          <button className="btn" onClick={() => handleEnd()}>
             End
           </button>
         </div>
@@ -125,4 +134,21 @@ export default function Home() {
   );
 }
 
-const Main = styled.main``;
+const Main = styled.main`
+  .btn {
+    background-color: limegreen;
+    border-radius: 1rem;
+    color: white;
+    padding-inline: 1.8rem;
+  }
+
+  form {
+    input {
+      border: 1px solid darkmagenta;
+      border-radius: 1rem;
+    }
+    .btn {
+      background-color: darkmagenta;
+    }
+  }
+`;
