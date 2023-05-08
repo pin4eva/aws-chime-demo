@@ -1,6 +1,6 @@
 div.RemoteVideos {
   height: 640px;
-  width: 640px;
+  /* width: 100; */
 }
 div.LocalVideo {
   outline-style: solid;

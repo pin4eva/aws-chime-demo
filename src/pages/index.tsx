@@ -101,59 +101,36 @@ export default function Home() {
       <div className="container mx-auto">
         <h1 className=" text-xl font-semibold">Hello AWS Chime</h1>
 
-        <div className="grid grid-cols-2">
-          <div className="left">
-            <h2 className=" font-semibold">Interview Questions</h2>
-
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et
-              dignissimos ad maxime in consequatur molestias, cumque assumenda
-              architecto! Quaerat vero, omnis a impedit aspernatur nulla odio
-              nesciunt nemo fugit cumque ratione in labore eveniet molestias
-              quae? Rerum rem esse sunt!
-            </p>
-
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et
-              dignissimos ad maxime in consequatur molestias, cumque assumenda
-              architecto! Quaerat vero, omnis a impedit aspernatur nulla odio
-              nesciunt nemo fugit cumque ratione in labore eveniet molestias
-              quae? Rerum rem esse sunt!
-            </p>
-          </div>
-          <div className="right">
-            <div className="RemoteVideos bg-neutral-200">
-              <RemoteVideos />
-              <div>{<LocalVideo className="LocalVideo" />}</div>
-            </div>
-            <div className="mt-4">
-              {" "}
-              <form onSubmit={handleJoinByRequestId} className="flex gap-2">
-                <input
-                  type="text"
-                  className="input block w-3/5 text-center"
-                  placeholder="requestId"
-                  value={requestId}
-                  onChange={(e) => setRequestId(e.target.value)}
-                />
-                <button disabled={!requestId} className="btn bg-red-500">
-                  Enter
-                </button>
-              </form>
-            </div>
-            <div className="flex gap-2 mt-4 flex-wrap">
-              <button className="btn" onClick={() => handleJoin()}>
-                {" "}
-                Join
-              </button>
-              <button className="btn" onClick={() => handleLeave()}>
-                Leave
-              </button>
-              <button className="btn" onClick={() => handleEnd()}>
-                End
-              </button>
-            </div>
-          </div>
+        <div className="RemoteVideos bg-neutral-200">
+          <RemoteVideos />
+          <div>{<LocalVideo className="LocalVideo" />}</div>
+        </div>
+        <div className="mt-4">
+          {" "}
+          <form onSubmit={handleJoinByRequestId} className="flex gap-2">
+            <input
+              type="text"
+              className="input block w-3/5 text-center"
+              placeholder="requestId"
+              value={requestId}
+              onChange={(e) => setRequestId(e.target.value)}
+            />
+            <button disabled={!requestId} className="btn bg-red-500">
+              Enter
+            </button>
+          </form>
+        </div>
+        <div className="flex gap-2 mt-4 flex-wrap">
+          <button className="btn" onClick={() => handleJoin()}>
+            {" "}
+            Join
+          </button>
+          <button className="btn" onClick={() => handleLeave()}>
+            Leave
+          </button>
+          <button className="btn" onClick={() => handleEnd()}>
+            End
+          </button>
         </div>
       </div>
     </Main>
